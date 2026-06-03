@@ -1,3 +1,11 @@
+<?php
+    include 'Model/Inventario.php';
+$inventario = new Inventario('','','','','','','');
+$row = $inventario->get();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,7 +13,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mantenimientos Industriales - Sistema de Gestión</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
 
     <link rel="stylesheet" href="estilo.css">
 </head>
@@ -35,7 +45,7 @@
                             <p class="card-description">Gestione repuestos y equipos registrados</p>
                         </div>
                         <div>
-                            <button class="btn btn-primary">
+                            <button class="btn btn-primary" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Clientes" data-bs-whatever="@getbootstrap">
                                 <i class="fas fa-plus"></i> Nuevo Item
                             </button>
                         </div>
@@ -121,36 +131,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php foreach($row as $i){ ?>
                                     <tr>
-                                        <td><strong style="color: var(--azul-rey);">REP-001</strong></td>
-                                        <td>Motor Eléctrico 5HP</td>
-                                        <td><span class="badge badge-info">Motores</span></td>
-                                        <td>5 / 3</td>
-                                        <td style="font-size: 12px; color: var(--gris-texto);">Bodega A - Estante 12</td>
-                                        <td>$450,000</td>
-                                        <td><span class="badge badge-success">Normal</span></td>
-                                        <td><button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;">Editar</button></td>
+                                        <td><strong><?php echo $i['codigo']; ?></strong></td>
+                                        <td><?php echo $i['nombre']; ?></td>
+                                        <td><?php echo $i['categoria']; ?></td>
+                                        <td><span class="badge badge-info"><?php echo $i['cantidad']; ?></span></td>
+                                        <td><?php echo $i['ubicacion']; ?></td>
+                                        <td><?php echo $i['costo']; ?></td>
+                                        <td><span class="badge badge-success"><?php echo $i['estado']; ?></span></td>
+                                        <td><button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;">Ver Detalles</button></td>
                                     </tr>
-                                    <tr>
-                                        <td><strong style="color: var(--azul-rey);">REP-002</strong></td>
-                                        <td>Compresor de Refrigeración</td>
-                                        <td><span class="badge badge-info">Refrigeración</span></td>
-                                        <td style="color: #EF4444; font-weight: 600;">2 / 3</td>
-                                        <td style="font-size: 12px; color: var(--gris-texto);">Bodega B - Estante 5</td>
-                                        <td>$1,200,000</td>
-                                        <td><span class="badge badge-danger">Stock Bajo</span></td>
-                                        <td><button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;">Editar</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong style="color: var(--azul-rey);">REP-003</strong></td>
-                                        <td>Cable UTP Cat 6</td>
-                                        <td><span class="badge badge-info">Cableado</span></td>
-                                        <td>150 / 50</td>
-                                        <td style="font-size: 12px; color: var(--gris-texto);">Bodega A - Estante 3</td>
-                                        <td>$2,500</td>
-                                        <td><span class="badge badge-success">Normal</span></td>
-                                        <td><button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;">Editar</button></td>
-                                    </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>
@@ -270,6 +262,57 @@
             </form>
         </div>
     </div>
+
+<div id="Clientes" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header btnprimary">
+                    <h5 class="modal-title text-dark" id="exampleModalLabel">Nuevo producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                <div class="modal-body">
+                    
+                    <form action="Controller/Ctl_inventario.php" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="text-dark">Codigo</label>
+                                <input type="text" name="codigo" class="border border-dark" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-dark">Nombre</label>
+                                <input type="text" name="nombre" class="border border-dark" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-dark">Categoria</label>
+                            <input type="text" name="categoria" class="border border-dark" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-dark">Cantidad</label>
+                            <input type="text" name="cantidad" class="border border-dark" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-dark">Ubicacion</label>
+                            <input type="text" name="ubicacion" class="border border-dark" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-dark">Costo</label>
+                            <input type="text" name="costo" class="border border-dark" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary">Cancelar</button>
+                        <button class="btn btn-primary" name="operacion" value="Guardar">Crear producto</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+
 
     <script src="app.js"></script>
 </body>
