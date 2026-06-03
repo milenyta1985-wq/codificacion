@@ -1,3 +1,11 @@
+<?php
+    include 'Model/Usuarios.php';
+$cliente = new Usuarios('','','','','','','');
+$row = $cliente->get();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,7 +13,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mantenimientos Industriales - Sistema de Gestión</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
     <link rel="stylesheet" href="estilo.css">
 </head>
@@ -35,7 +44,7 @@
                             <p class="card-description">Administre y consulte información de clientes</p>
                         </div>
                         <div>
-                            <button class="btn btn-primary" onclick="openModal('modalCliente')">
+                            <button class="btn btn-primary" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Clientes" data-bs-whatever="@getbootstrap">
                                 <i class="fas fa-plus"></i> Nuevo Cliente
                             </button>
                         </div>
@@ -52,7 +61,6 @@
                                 <thead>
                                     <tr>
                                         <th>Empresa</th>
-                                        <th>Contacto</th>
                                         <th>Teléfono</th>
                                         <th>Email</th>
                                         <th>Tipo</th>
@@ -61,42 +69,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php foreach($row as $i){ ?>
                                     <tr>
-                                        <td><strong>Industrias ABC S.A.</strong></td>
-                                        <td>Roberto García</td>
-                                        <td>+57 310 234 5678</td>
-                                        <td>contacto@industriasabc.com</td>
-                                        <td><span class="badge badge-info">Manufacturera</span></td>
-                                        <td>45</td>
+                                        <td><strong><?php echo $i['empresa']; ?></strong></td>
+                                        <td><?php echo $i['telefono']; ?></td>
+                                        <td><?php echo $i['correo']; ?></td>
+                                        <td><span class="badge badge-info"><?php echo $i['tipo']; ?></span></td>
+                                        <td><?php echo $i['servicio']; ?></td>
                                         <td><button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;">Ver Detalles</button></td>
                                     </tr>
-                                    <tr>
-                                        <td><strong>Fábrica XYZ Ltda.</strong></td>
-                                        <td>María Fernández</td>
-                                        <td>+57 320 345 6789</td>
-                                        <td>info@fabricaxyz.com</td>
-                                        <td><span class="badge badge-info">Textil</span></td>
-                                        <td>32</td>
-                                        <td><button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;">Ver Detalles</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Almacenes DEF</strong></td>
-                                        <td>Carlos Rodríguez</td>
-                                        <td>+57 315 456 7890</td>
-                                        <td>carlos@almacenesdef.com</td>
-                                        <td><span class="badge badge-info">Logística</span></td>
-                                        <td>28</td>
-                                        <td><button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;">Ver Detalles</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Construcciones GHI</strong></td>
-                                        <td>Ana Martínez</td>
-                                        <td>+57 318 567 8901</td>
-                                        <td>contacto@construccionesghi.com</td>
-                                        <td><span class="badge badge-info">Construcción</span></td>
-                                        <td>19</td>
-                                        <td><button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;">Ver Detalles</button></td>
-                                    </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>
@@ -216,6 +198,51 @@
             </form>
         </div>
     </div>
+
+<div id="Clientes" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header btnprimary">
+                    <h5 class="modal-title text-dark" id="exampleModalLabel">Nuevo cliente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                <div class="modal-body">
+                    
+                    <form action="Controller/Ctl_usuarios.php" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="text-dark">Empresa</label>
+                                <input type="text" name="empresa" class="border border-dark" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-dark">Telefono</label>
+                                <input type="text" name="telefono" class="border border-dark" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-dark">Correo</label>
+                            <input type="text" name="correo" class="border border-dark" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-dark">Tipo</label>
+                            <input type="text" name="tipo" class="border border-dark" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-dark">Servicio</label>
+                            <input type="text" name="servicio" class="border border-dark" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary">Cancelar</button>
+                        <button class="btn btn-primary" name="operacion" value="Guardar">Crear Cliente</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
     <script src="app.js"></script>
 </body>
