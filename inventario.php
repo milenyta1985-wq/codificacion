@@ -140,7 +140,7 @@ $row = $inventario->get();
                                         <td><?php echo $i['ubicacion']; ?></td>
                                         <td><?php echo $i['costo']; ?></td>
                                         <td><span class="badge badge-success"><?php echo $i['estado']; ?></span></td>
-                                        <td><button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;">Ver Detalles</button></td>
+                                        <td><button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#inventario<?php echo $i['codigo']; ?>" data-bs-whatever="@getbootstrap">Editar</button></td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>
@@ -308,6 +308,55 @@ $row = $inventario->get();
             </div>
             </div>
         </div>
+
+
+        <?php foreach($row as $i){ ?>
+        <div id="inventario<?php echo $i['codigo']; ?>" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header btnprimary">
+                    <h5 class="modal-title text-dark" id="exampleModalLabel">Editar producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                <div class="modal-body">
+                    
+                    <form action="Controller/Ctl_inventario.php" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="text-dark">Codigo</label>
+                                <input type="text" name="codigo" class="border border-dark" required value="<?php echo $i['codigo']; ?>" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-dark">Nombre</label>
+                                <input type="text" name="nombre" class="border border-dark" required value="<?php echo $i['nombre']; ?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-dark">Categoria</label>
+                            <input type="text" name="categoria" class="border border-dark" required value="<?php echo $i['categoria']; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label class="text-dark">Cantidad</label>
+                            <input type="text" name="cantidad" class="border border-dark" required value="<?php echo $i['cantidad']; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label class="text-dark">Ubicacion</label>
+                            <input type="text" name="ubicacion" class="border border-dark" required value="<?php echo $i['ubicacion']; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label class="text-dark">Costo</label>
+                            <input type="text" name="costo" class="border border-dark" required value="<?php echo $i['costo']; ?>">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary">Cancelar</button>
+                        <button class="btn btn-primary" name="operacion" value="Editar">Editar producto</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+        <?php } ?>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>

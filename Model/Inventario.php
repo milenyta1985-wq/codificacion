@@ -52,7 +52,7 @@ class Inventario {
         $con = new Conexion();
         $respuesta = $con->conectar();
 
-        $sql = $respuesta->prepare("UPDATE orden SET nombre=:nombre,categoria=:categoria,cantidad=:cantidad,ubicacion=:ubicacion,costo=:costo,estado=:estado WHERE codigo=:codigo");
+        $sql = $respuesta->prepare("UPDATE inventario SET nombre=:nombre,categoria=:categoria,cantidad=:cantidad,ubicacion=:ubicacion,costo=:costo,estado=:estado WHERE codigo=:codigo");
         $sql->bindParam('codigo', $this->codigo);
         $sql->bindParam('nombre', $this->nombre);
         $sql->bindParam('categoria', $this->categoria);
