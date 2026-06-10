@@ -92,7 +92,12 @@ $row = $cliente->get();
                                         <td><span class="badge badge-info"><?php echo $i['prioridad']; ?></span></td>
                                         <td><?php echo $i['estado']; ?></td>
                                         <td><?php echo $i['responsable']; ?></td>
-                                        <td><button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#orden<?php echo $i['orden']; ?>" data-bs-whatever="@getbootstrap">Editar</button></td>
+                                        <td>
+                                            <a href="Controller/Ctl_orden.php?orden=<?php echo $i['orden']; ?>&operacion=Eliminar" class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;">
+                                                <i class="fas fa-trash"></i> Eliminar
+                                            </a>
+                                            <button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#orden<?php echo $i['orden']; ?>" data-bs-whatever="@getbootstrap">Editar</button>
+                                        </td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>
