@@ -43,7 +43,7 @@ function eliminar(){
     $id_cliente = $_REQUEST['id_cliente'];
 
     // instanciamos la clase clientes del modelo
-    $cliente = new Clientes($id_cliente,'','','','','','');
+    $cliente = new Usuarios($id_cliente,'','','','','','');
     $row = $cliente->eliminar();
 
     // validamos si la funcion guadar es exitosa 

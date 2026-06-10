@@ -1,3 +1,14 @@
+<?php 
+    include 'Model/Ordenes.php';
+    include 'Model/Tecnico.php';
+    $ordenes = new Ordenes('','','','','','');
+    $rows = $ordenes->ordenActiva();
+    $rowsx = $ordenes->ordenLista();
+    $tecnico = new Tecnico('','','','','');
+    $rowsy = $tecnico->tecnicoActivo();
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -33,7 +44,7 @@
                             <div class="kpi-icon" style="background: var(--azul-rey);">
                                 <i class="fas fa-clipboard-list"></i>
                             </div>
-                            <div class="kpi-value">23</div>
+                            <div class="kpi-value"><?php echo $rows[0]['total']; ?></div>
                             <div class="kpi-label">Órdenes Activas</div>
                             <div class="kpi-change">
                                 <i class="fas fa-arrow-up"></i> +12%
@@ -44,7 +55,7 @@
                             <div class="kpi-icon" style="background: #10B981;">
                                 <i class="fas fa-check-circle"></i>
                             </div>
-                            <div class="kpi-value">156</div>
+                            <div class="kpi-value"><?php echo $rowsx[0]['total']; ?></div>
                             <div class="kpi-label">Órdenes Finalizadas</div>
                             <div class="kpi-change">
                                 <i class="fas fa-arrow-up"></i> +8%
@@ -55,7 +66,7 @@
                             <div class="kpi-icon" style="background: var(--amarillo);">
                                 <i class="fas fa-users"></i>
                             </div>
-                            <div class="kpi-value">8</div>
+                            <div class="kpi-value"><?php echo $rowsy[0]['total']; ?></div>
                             <div class="kpi-label">Técnicos Disponibles</div>
                             <div class="kpi-change">
                                 <i class="fas fa-check"></i> 100%

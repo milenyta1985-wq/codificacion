@@ -66,7 +66,18 @@ class Tecnico {
         $sql->execute();
         $resultados = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $resultados;
-}
+    }
+
+    public function tecnicoActivo(){
+        require_once 'DB/Conexion.php';
+        $con = new Conexion();
+        $respuesta = $con->conectar();
+
+        $sql = $respuesta->prepare("SELECT COUNT(*) AS total FROM tecnicos");
+        $sql->execute();
+        $resultados = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $resultados;
+    }
 
 
 

@@ -76,7 +76,12 @@ $row = $cliente->get();
                                         <td><?php echo $i['correo']; ?></td>
                                         <td><span class="badge badge-info"><?php echo $i['tipo']; ?></span></td>
                                         <td><?php echo $i['servicio']; ?></td>
-                                        <td><button class="btn btn-primary" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Clientes<?php echo $i['id_cliente']; ?>" data-bs-whatever="@getbootstrap" style="padding: 6px 12px; font-size: 12px;">Editar</button></td>
+                                        <td>
+                                            <a href="Controller/Ctl_usuarios.php?id_cliente=<?php echo $i['id_cliente']; ?>&operacion=Eliminar" class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;">
+                                                <i class="fas fa-trash"></i> Eliminar
+                                            </a>
+                                            <button class="btn btn-primary" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Clientes<?php echo $i['id_cliente']; ?>" data-bs-whatever="@getbootstrap" style="padding: 6px 12px; font-size: 12px;">Editar</button>
+                                        </td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>
