@@ -10,6 +10,7 @@ switch ($operacion) {
     // clase que llama a la funcion fuardar y egecuta el metodo guardar
     case 'Guardar':guardar();break;
     case 'Eliminar':eliminar();break;
+    case 'Editar':editar();break;
 }
 
 // funcion guardar del controlador
@@ -56,4 +57,29 @@ function eliminar(){
         </script>';
     }
 }
+
+function editar(){
+   $id_cliente = $_REQUEST['id_cliente'];
+    $empresa = $_REQUEST['empresa'];
+    $telefono = $_REQUEST['telefono'];
+    $correo = $_REQUEST['correo'];
+    $tipo = $_REQUEST['tipo'];
+    $servicio = $_REQUEST['servicio'];
+
+    $tecnico = new Usuarios($id_cliente,$empresa,$telefono,$correo,$tipo,$servicio);
+    $pre = $tecnico->editar();
+
+    if($pre){
+        echo '<script>alert("exitoso");
+            window.location = "../clientes.php";
+        </script>';
+    }else{
+        echo '<script>alert("Error");
+            window.location = "../clientes.php";
+        </script>';
+    }
+
+    
+}
+
 ?>

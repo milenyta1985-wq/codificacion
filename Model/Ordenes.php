@@ -70,7 +70,10 @@ class Ordenes {
         $sql->execute();
         $resultados = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $resultados;
-}
+    }
+
+
+    
 
 
 }

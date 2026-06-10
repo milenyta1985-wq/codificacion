@@ -52,7 +52,34 @@ public function get(){
         return $resultados;
 }
 
+public function eliminar(){
+        include '../DB/Conexion.php';
+        $con = new Conexion();
+        $respuesta = $con->conectar();
 
+        $sql = $respuesta->prepare("DELETE FROM clientes WHERE id_cliente=:id_cliente");
+        $sql->bindParam('id_cliente', $this->id_cliente);
+        $row = $sql->execute();
+        return $row;
+    }
+
+    
+
+    public function editar(){
+        include '../DB/Conexion.php';
+        $con = new Conexion();
+        $respuesta = $con->conectar();
+
+        $sql = $respuesta->prepare("UPDATE clientes SET empresa=:empresa,telefono=:telefono,correo=:correo,tipo=:tipo,servicio=:servicio WHERE id_cliente=:id_cliente");
+        $sql->bindParam('id_cliente', $this->id_cliente);
+        $sql->bindParam('empresa', $this->empresa);
+        $sql->bindParam('telefono', $this->telefono);
+        $sql->bindParam('correo', $this->correo);
+        $sql->bindParam('tipo', $this->tipo);
+        $sql->bindParam('servicio', $this->servicio);
+        $row = $sql->execute();
+        return $row;
+    }
 
 
 

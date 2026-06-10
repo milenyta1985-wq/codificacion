@@ -76,7 +76,7 @@ $row = $cliente->get();
                                         <td><?php echo $i['correo']; ?></td>
                                         <td><span class="badge badge-info"><?php echo $i['tipo']; ?></span></td>
                                         <td><?php echo $i['servicio']; ?></td>
-                                        <td><button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;">Ver Detalles</button></td>
+                                        <td><button class="btn btn-primary" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Clientes<?php echo $i['id_cliente']; ?>" data-bs-whatever="@getbootstrap" style="padding: 6px 12px; font-size: 12px;">Editar</button></td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>
@@ -240,6 +240,51 @@ $row = $cliente->get();
             </div>
             </div>
         </div>
+
+        <?php foreach ($row as $i){ ?>
+<div id="Clientes<?php echo $i['id_cliente']; ?>" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header btnprimary">
+                    <h5 class="modal-title text-dark" id="exampleModalLabel">Editar cliente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                <div class="modal-body">
+                    
+                    <form action="Controller/Ctl_usuarios.php" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="text-dark">Empresa</label>
+                                <input type="text" name="id_cliente" class="border border-dark" required value="<?php echo $i['id_cliente']; ?>">
+                                <input type="text" name="empresa" class="border border-dark" required value="<?php echo $i['empresa']; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label class="text-dark">Telefono</label>
+                                <input type="text" name="telefono" class="border border-dark" required value="<?php echo $i['telefono']; ?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-dark">Correo</label>
+                            <input type="text" name="correo" class="border border-dark" required value="<?php echo $i['correo']; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label class="text-dark">Tipo</label>
+                            <input type="text" name="tipo" class="border border-dark" required value="<?php echo $i['tipo']; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label class="text-dark">Servicio</label>
+                            <input type="text" name="servicio" class="border border-dark" required value="<?php echo $i['servicio']; ?>">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary">Cancelar</button>
+                        <button class="btn btn-primary" name="operacion" value="Editar">Editar Cliente</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+        <?php } ?>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
