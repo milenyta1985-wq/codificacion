@@ -92,7 +92,7 @@ $row = $cliente->get();
                                         <td><span class="badge badge-info"><?php echo $i['prioridad']; ?></span></td>
                                         <td><?php echo $i['estado']; ?></td>
                                         <td><?php echo $i['responsable']; ?></td>
-                                        <td><button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;">Ver Detalles</button></td>
+                                        <td><button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#orden<?php echo $i['orden']; ?>" data-bs-whatever="@getbootstrap">Editar</button></td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>
@@ -258,6 +258,52 @@ $row = $cliente->get();
             </div>
             </div>
         </div>
+
+
+        <?php foreach($row as $i){ ?>
+        <div id="orden<?php echo $i['orden']; ?>" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header btnprimary">
+                    <h5 class="modal-title text-dark" id="exampleModalLabel">Nueva Orden</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                <div class="modal-body">
+                    
+                    <form action="Controller/Ctl_orden.php" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="text-dark">Orden</label>
+                                <input type="text" name="orden" class="border border-dark" required value="<?php echo $i['orden']; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label class="text-dark">Cliente</label>
+                                <input type="text" name="cliente" class="border border-dark" required value="<?php echo $i['cliente']; ?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-dark">Tipo</label>
+                            <input type="text" name="tipo" class="border border-dark" required value="<?php echo $i['tipo']; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label class="text-dark">Prioridad</label>
+                            <input type="text" name="prioridad" class="border border-dark" required value="<?php echo $i['prioridad']; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label class="text-dark">Responsable</label>
+                            <input type="text" name="responsable" class="border border-dark" required value="<?php echo $i['responsable']; ?>">
+                        </div>
+                       
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary">Cancelar</button>
+                        <button class="btn btn-primary" name="operacion" value="Editar">Editar Orden</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+        <?php } ?>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
