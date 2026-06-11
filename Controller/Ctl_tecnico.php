@@ -7,6 +7,7 @@ $operacion = $_REQUEST['operacion'];
 switch ($operacion) {
     case 'Guardar':guardar();break;
     case 'Eliminar':eliminar();break;
+    case 'Editar':editar();break;
 }
 
 function guardar(){
@@ -49,6 +50,29 @@ function eliminar(){
     }
 
 
+}
+
+function editar(){
+    $id_tecnico = $_REQUEST['id_tecnico'];
+    $tecnico = $_REQUEST['tecnico'];
+    $especialidad = $_REQUEST['especialidad'];
+    $trab_activos = $_REQUEST['trab_activos'];
+    $trab_completos = $_REQUEST['trab_completos'];
+
+    $tecnico = new Tecnico($id_tecnico,$tecnico,$especialidad,$trab_activos,$trab_completos);
+    $pre = $tecnico->editar();
+
+    if($pre){
+        echo '<script>alert("exitoso");
+            window.location = "../tecnicos.php";
+        </script>';
+    }else{
+        echo '<script>alert("Error");
+            window.location = "../tecnicos.php";
+        </script>';
+    }
+
+    
 }
 
 ?>

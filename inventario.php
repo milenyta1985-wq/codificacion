@@ -140,7 +140,12 @@ $row = $inventario->get();
                                         <td><?php echo $i['ubicacion']; ?></td>
                                         <td><?php echo $i['costo']; ?></td>
                                         <td><span class="badge badge-success"><?php echo $i['estado']; ?></span></td>
-                                        <td><button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#inventario<?php echo $i['codigo']; ?>" data-bs-whatever="@getbootstrap">Editar</button></td>
+                                        <td>
+                                            <a href="Controller/Ctl_inventario.php?codigo=<?php echo $i['codigo']; ?>&operacion=Eliminar" class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;">
+                                                <i class="fas fa-trash"></i> Eliminar
+                                            </a>
+                                            <button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#inventario<?php echo $i['codigo']; ?>" data-bs-whatever="@getbootstrap">Editar</button>
+                                        </td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>

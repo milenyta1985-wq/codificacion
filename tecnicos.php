@@ -1,3 +1,9 @@
+<?php 
+    include 'Model/Tecnico.php';
+    $tecnico = new Tecnico('','','','','');
+    $row = $tecnico->get();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -45,90 +51,37 @@
                     </div>
 
                     <div class="grid grid-3">
+                        <?php foreach ($row as $i) { ?>
                         <div class="card">
                             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
                                 <div style="width: 48px; height: 48px; background: var(--azul-rey); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
                                     <i class="fas fa-user"></i>
                                 </div>
                                 <div style="flex: 1;">
-                                    <h3 style="font-size: 16px; margin-bottom: 2px;">Juan Pérez</h3>
-                                    <p style="font-size: 12px; color: var(--gris-texto);">Electricidad Industrial</p>
+                                    <h3 style="font-size: 16px; margin-bottom: 2px;"><?php echo $i['tecnico']; ?></h3>
+                                    <p style="font-size: 12px; color: var(--gris-texto);"><?php echo $i['especialidad']; ?></p>
                                 </div>
                                 <div style="width: 12px; height: 12px; background: #10B981; border-radius: 50%;"></div>
+                                <div><a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Clientes<?php echo $i['id_tecnico']; ?>" data-bs-whatever="@getbootstrap">👁️</a></div>
                             </div>
                             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
                                 <i class="fas fa-star" style="color: #F59E0B;"></i>
                                 <span style="font-weight: 600;">4.8</span>
-                                <span style="font-size: 12px; color: var(--gris-texto);">(156 trabajos)</span>
+                                <span style="font-size: 12px; color: var(--gris-texto);">(<?php echo $i['trab_activos'] + $i['trab_completos']; ?>)</span>
                             </div>
                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
                                 <div style="text-align: center; padding: 8px; background: #DBEAFE; border-radius: 6px;">
-                                    <div style="font-size: 18px; font-weight: 600; color: var(--azul-rey);">2</div>
+                                    <div style="font-size: 18px; font-weight: 600; color: var(--azul-rey);"><?php echo $i['trab_activos']; ?></div>
                                     <div style="font-size: 10px; color: var(--gris-texto);">Activos</div>
                                 </div>
                                 <div style="text-align: center; padding: 8px; background: #DEF7EC; border-radius: 6px;">
-                                    <div style="font-size: 18px; font-weight: 600; color: #10B981;">156</div>
-                                    <div style="font-size: 10px; color: var(--gris-texto);">Completados</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                                <div style="width: 48px; height: 48px; background: var(--azul-rey); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
-                                    <i class="fas fa-user"></i>
-                                </div>
-                                <div style="flex: 1;">
-                                    <h3 style="font-size: 16px; margin-bottom: 2px;">María López</h3>
-                                    <p style="font-size: 12px; color: var(--gris-texto);">Refrigeración Industrial</p>
-                                </div>
-                                <div style="width: 12px; height: 12px; background: #10B981; border-radius: 50%;"></div>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-                                <i class="fas fa-star" style="color: #F59E0B;"></i>
-                                <span style="font-weight: 600;">4.9</span>
-                                <span style="font-size: 12px; color: var(--gris-texto);">(142 trabajos)</span>
-                            </div>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-                                <div style="text-align: center; padding: 8px; background: #DBEAFE; border-radius: 6px;">
-                                    <div style="font-size: 18px; font-weight: 600; color: var(--azul-rey);">1</div>
-                                    <div style="font-size: 10px; color: var(--gris-texto);">Activos</div>
-                                </div>
-                                <div style="text-align: center; padding: 8px; background: #DEF7EC; border-radius: 6px;">
-                                    <div style="font-size: 18px; font-weight: 600; color: #10B981;">142</div>
-                                    <div style="font-size: 10px; color: var(--gris-texto);">Completados</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                                <div style="width: 48px; height: 48px; background: var(--azul-rey); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
-                                    <i class="fas fa-user"></i>
-                                </div>
-                                <div style="flex: 1;">
-                                    <h3 style="font-size: 16px; margin-bottom: 2px;">Carlos Ruiz</h3>
-                                    <p style="font-size: 12px; color: var(--gris-texto);">Cableado Estructurado</p>
-                                </div>
-                                <div style="width: 12px; height: 12px; background: #EF4444; border-radius: 50%;"></div>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-                                <i class="fas fa-star" style="color: #F59E0B;"></i>
-                                <span style="font-weight: 600;">4.7</span>
-                                <span style="font-size: 12px; color: var(--gris-texto);">(98 trabajos)</span>
-                            </div>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-                                <div style="text-align: center; padding: 8px; background: #DBEAFE; border-radius: 6px;">
-                                    <div style="font-size: 18px; font-weight: 600; color: var(--azul-rey);">3</div>
-                                    <div style="font-size: 10px; color: var(--gris-texto);">Activos</div>
-                                </div>
-                                <div style="text-align: center; padding: 8px; background: #DEF7EC; border-radius: 6px;">
-                                    <div style="font-size: 18px; font-weight: 600; color: #10B981;">98</div>
+                                    <div style="font-size: 18px; font-weight: 600; color: #10B981;"><?php echo $i['trab_completos']; ?></div>
                                     <div style="font-size: 10px; color: var(--gris-texto);">Completados</div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <?php } ?>
                 </div>
             </div>
         </main>
@@ -284,6 +237,53 @@
             </div>
             </div>
         </div>
+
+
+        <?php foreach ($row as $i){ ?>
+
+          <div id="Clientes<?php echo $i['id_tecnico']; ?>" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header btnprimary">
+                    <h5 class="modal-title text-dark" id="exampleModalLabel">Técnico</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                <div class="modal-body">
+                    
+                    <form action="Controller/Ctl_tecnico.php" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="text-dark">Tecnico</label>
+                                <input type="text" name="id_tecnico" class="border border-dark" required value="<?php echo $i['id_tecnico']; ?>">
+                                <input type="text" name="tecnico" class="border border-dark" required value="<?php echo $i['tecnico']; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label class="text-dark">Especialidad</label>
+                                <input type="text" name="especialidad" class="border border-dark" required value="<?php echo $i['especialidad']; ?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-dark">Trabajo activo</label>
+                            <input type="text" name="trab_activos" class="border border-dark" required value="<?php echo $i['trab_activos']; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label class="text-dark">Trabajos Completos</label>
+                            <input type="text" name="trab_completos" class="border border-dark" required value="<?php echo $i['trab_completos']; ?>">
+                        </div>
+                       
+                       
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary">Cancelar</button>
+                        <button class="btn btn-primary" name="operacion" value="Editar">editar Tecnico</button>
+                        <a href="Controller/Ctl_tecnico.php?operacion=Eliminar&id_tecnico=<?php echo $i['id_tecnico']; ?>" class="btn btn-danger">Eliminar</a>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>  
+
+        <?php } ?>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
