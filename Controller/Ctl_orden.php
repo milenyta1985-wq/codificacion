@@ -1,6 +1,6 @@
 <?php
 
-include '../model/Ordenes.php';
+include '../Model/Ordenes.php';
 
 $operacion = $_REQUEST['operacion'];
 
@@ -15,20 +15,16 @@ function guardar(){
     $cliente = $_REQUEST['cliente'];
     $tipo = $_REQUEST['tipo'];
     $prioridad = $_REQUEST['prioridad'];
-    $estado = 1;
+    $estado = "pendiente";
     $responsable = $_REQUEST['responsable'];
 
     $ordenes = new Ordenes($orden,$cliente,$tipo,$prioridad,$estado,$responsable);
     $pre = $ordenes->guardar();
 
     if($pre){
-        echo '<script>alert("exitoso");
-            window.location = "../ordenes.php";
-        </script>';
+        echo 'ok';
     }else{
-        echo '<script>alert("Error");
-            window.location = "../ordenes.php";
-        </script>';
+        echo 'error';
     }
 
     

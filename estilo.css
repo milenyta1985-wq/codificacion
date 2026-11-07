@@ -528,7 +528,7 @@
         }
 
         /* MODAL */
-        .modal {
+        /* .modal {
             display: none;
             position: fixed;
             top: 0;
@@ -580,7 +580,7 @@
             font-size: 24px;
             cursor: pointer;
             color: var(--gris-texto);
-        }
+        } */
 
         /* SEARCH */
         .search-box {

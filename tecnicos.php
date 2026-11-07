@@ -14,7 +14,9 @@
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.26.25/sweetalert2.css">
+   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.26.25/sweetalert2.min.js"></script>
+   
 
     <link rel="stylesheet" href="estilo.css">
 </head>
@@ -207,31 +209,33 @@
                   </div>
                 <div class="modal-body">
                     
-                    <form action="Controller/Ctl_tecnico.php" method="POST">
+                    <!-- <form action="Controller/Ctl_tecnico.php" method="POST"> -->
+                    <form id="frmTecnico">
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="text-dark">Tecnico</label>
-                                <input type="text" name="tecnico" class="border border-dark" required>
+                                <input type="text" name="tecnico" id="tecnico" class="form-control border border-dark" required>
                             </div>
                             <div class="form-group">
                                 <label class="text-dark">Especialidad</label>
-                                <input type="text" name="especialidad" class="border border-dark" required>
+                                <input type="text" name="especialidad" id="especialidad" class="form-control border border-dark" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="text-dark">Trabajo activo</label>
-                            <input type="text" name="trab_activos" class="border border-dark" required>
+                            <input type="text" name="trab_activos" id="trab_activos" class="form-control border border-dark" required>
                         </div>
                         <div class="form-group">
                             <label class="text-dark">Trabajos Completos</label>
-                            <input type="text" name="trab_completos" class="border border-dark" required>
+                            <input type="text" name="trab_completos" id="trab_completos" class="form-control border border-dark" required>
                         </div>
                        
                        
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary">Cancelar</button>
-                        <button class="btn btn-primary" name="operacion" value="Guardar">Crear Tecnico</button>
+                        <button class="btn btn-primary" id="botonTecnico">Crear Tecnico</button>
+                        <!-- <button class="btn btn-primary" name="operacion" value="Guardar">Crear Tecnico</button> -->
                     </div>
                 </form>
             </div>
@@ -254,21 +258,21 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="text-dark">Tecnico</label>
-                                <input type="text" name="id_tecnico" class="border border-dark" required value="<?php echo $i['id_tecnico']; ?>">
-                                <input type="text" name="tecnico" class="border border-dark" required value="<?php echo $i['tecnico']; ?>">
+                                <input type="hidden" name="id_tecnico" class="border border-dark" required value="<?php echo $i['id_tecnico']; ?>">
+                                <input type="text" name="tecnico" class="border border-dark form-control" required value="<?php echo $i['tecnico']; ?>">
                             </div>
                             <div class="form-group">
                                 <label class="text-dark">Especialidad</label>
-                                <input type="text" name="especialidad" class="border border-dark" required value="<?php echo $i['especialidad']; ?>">
+                                <input type="text" name="especialidad" class="border border-dark form-control" required value="<?php echo $i['especialidad']; ?>">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="text-dark">Trabajo activo</label>
-                            <input type="text" name="trab_activos" class="border border-dark" required value="<?php echo $i['trab_activos']; ?>">
+                            <input type="text" name="trab_activos" class="border border-dark form-control" required value="<?php echo $i['trab_activos']; ?>">
                         </div>
                         <div class="form-group">
                             <label class="text-dark">Trabajos Completos</label>
-                            <input type="text" name="trab_completos" class="border border-dark" required value="<?php echo $i['trab_completos']; ?>">
+                            <input type="text" name="trab_completos" class="border border-dark form-control" required value="<?php echo $i['trab_completos']; ?>">
                         </div>
                        
                        
@@ -291,5 +295,6 @@
 
 
     <script src="app.js"></script>
+    <script src="js/tecnico.js"></script>
 </body>
 </html>

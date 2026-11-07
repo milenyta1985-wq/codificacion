@@ -1,6 +1,6 @@
 <?php
 
-include '../model/Inventario.php';
+include '../Model/Inventario.php';
 
 $operacion = $_REQUEST['operacion'];
 
@@ -23,13 +23,9 @@ function guardar(){
     $pre = $inventario->guardar();
 
     if($pre){
-        echo '<script>alert("exitoso");
-            window.location = "../inventario.php";
-        </script>';
+        echo 'ok';
     }else{
-        echo '<script>alert("Error");
-            window.location = "../inventario.php";
-        </script>';
+        echo 'error';
     }
 
     

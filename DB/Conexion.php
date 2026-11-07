@@ -4,7 +4,7 @@ class Conexion{
     private $host = "localhost"; 
     private $usuario = "root";
     private $password = "";
-    private $db = "industrial";
+    private $db = "Industrial2";
 
     public function conectar(){
         try {

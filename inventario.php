@@ -16,6 +16,9 @@ $row = $inventario->get();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.26.25/sweetalert2.css">
+   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.26.25/sweetalert2.min.js"></script>
+   
 
     <link rel="stylesheet" href="estilo.css">
 </head>
@@ -277,37 +280,39 @@ $row = $inventario->get();
                   </div>
                 <div class="modal-body">
                     
-                    <form action="Controller/Ctl_inventario.php" method="POST">
+                    <!-- <form action="Controller/Ctl_inventario.php" method="POST"> -->
+                    <form id="frmInven">
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="text-dark">Codigo</label>
-                                <input type="text" name="codigo" class="border border-dark" required>
+                                <input type="text" name="codigo" id="codigo" class="form-control border border-dark" required>
                             </div>
                             <div class="form-group">
                                 <label class="text-dark">Nombre</label>
-                                <input type="text" name="nombre" class="border border-dark" required>
+                                <input type="text" name="nombre" id="nombre" class="form-control border border-dark" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="text-dark">Categoria</label>
-                            <input type="text" name="categoria" class="border border-dark" required>
+                            <input type="text" name="categoria" id="categoria" class="form-control border border-dark" required>
                         </div>
                         <div class="form-group">
                             <label class="text-dark">Cantidad</label>
-                            <input type="text" name="cantidad" class="border border-dark" required>
+                            <input type="text" name="cantidad" id="cantidad" class="form-control border border-dark" required>
                         </div>
                         <div class="form-group">
                             <label class="text-dark">Ubicacion</label>
-                            <input type="text" name="ubicacion" class="border border-dark" required>
+                            <input type="text" name="ubicacion" id="ubicacion" class="form-control border border-dark" required>
                         </div>
                         <div class="form-group">
                             <label class="text-dark">Costo</label>
-                            <input type="text" name="costo" class="border border-dark" required>
+                            <input type="text" name="costo" id="costo" class="form-control border border-dark" required>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary">Cancelar</button>
-                        <button class="btn btn-primary" name="operacion" value="Guardar">Crear producto</button>
+                        <button class="btn btn-primary"id="botonInven">Crear producto</button>
+                        <!-- <button class="btn btn-primary" name="operacion" value="Guardar">Crear producto</button> -->
                     </div>
                 </form>
             </div>
@@ -329,28 +334,28 @@ $row = $inventario->get();
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="text-dark">Codigo</label>
-                                <input type="text" name="codigo" class="border border-dark" required value="<?php echo $i['codigo']; ?>" readonly>
+                                <input type="text" name="codigo" class="border border-dark form-control " required value="<?php echo $i['codigo']; ?>" readonly>
                             </div>
                             <div class="form-group">
                                 <label class="text-dark">Nombre</label>
-                                <input type="text" name="nombre" class="border border-dark" required value="<?php echo $i['nombre']; ?>">
+                                <input type="text" name="nombre" class="border border-dark form-control" required value="<?php echo $i['nombre']; ?>">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="text-dark">Categoria</label>
-                            <input type="text" name="categoria" class="border border-dark" required value="<?php echo $i['categoria']; ?>">
+                            <input type="text" name="categoria" class="border border-dark form-control" required value="<?php echo $i['categoria']; ?>">
                         </div>
                         <div class="form-group">
                             <label class="text-dark">Cantidad</label>
-                            <input type="text" name="cantidad" class="border border-dark" required value="<?php echo $i['cantidad']; ?>">
+                            <input type="text" name="cantidad" class="border border-dark form-control" required value="<?php echo $i['cantidad']; ?>">
                         </div>
                         <div class="form-group">
                             <label class="text-dark">Ubicacion</label>
-                            <input type="text" name="ubicacion" class="border border-dark" required value="<?php echo $i['ubicacion']; ?>">
+                            <input type="text" name="ubicacion" class="border border-dark form-control" required value="<?php echo $i['ubicacion']; ?>">
                         </div>
                         <div class="form-group">
                             <label class="text-dark">Costo</label>
-                            <input type="text" name="costo" class="border border-dark" required value="<?php echo $i['costo']; ?>">
+                            <input type="text" name="costo" class="border border-dark form-control" required value="<?php echo $i['costo']; ?>">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -369,5 +374,6 @@ $row = $inventario->get();
 
 
     <script src="app.js"></script>
+    <script src="js/inventario.js"></script>
 </body>
 </html>

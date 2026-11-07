@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['rol'])){
+    header("location: index.php");
+}
+?>
+
 <aside id="sidebar" class="sidebar">
             <div class="sidebar-header">
                 <div class="sidebar-logo">
@@ -39,10 +46,10 @@
                     <i class="fas fa-file-alt"></i>
                     <span>Reportes</span>
                 </a>
-                <a href="confi.php" class="menu-item" data-page="configuracion">
+                <!--a href="confi.php" class="menu-item" data-page="configuracion">
                     <i class="fas fa-cog"></i>
                     <span>Configuración</span>
-                </a>
+                </a-->
             </nav>
             
             <div class="sidebar-user">

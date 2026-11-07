@@ -27,13 +27,9 @@ function guardar(){
 
     // validamos si la funcion guadar es exitosa 
     if($row){
-        echo '<script>alert("exitoso");
-        window.location = "../clientes.php";
-        </script>';
+        echo 'ok';
     }else{
-        echo '<script>alert("Error intentelo de nuevo");
-        window.location = "../clientes.php";
-        </script>';
+        echo 'error';
     }
 
 }

@@ -16,6 +16,9 @@ $row = $cliente->get();
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.26.25/sweetalert2.css">
+   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.26.25/sweetalert2.min.js"></script>
+    
 
     <link rel="stylesheet" href="estilo.css">
 </head>
@@ -230,34 +233,36 @@ $row = $cliente->get();
                   </div>
                 <div class="modal-body">
                     
-                    <form action="Controller/Ctl_orden.php" method="POST">
+                    <!-- <form action="Controller/Ctl_orden.php" method="POST"> -->
+                    <form id="frmOrden">
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="text-dark">Orden</label>
-                                <input type="text" name="orden" class="border border-dark" required>
+                                <input type="text" name="orden" id="orden" class="form-control border border-dark" required>
                             </div>
                             <div class="form-group">
                                 <label class="text-dark">Cliente</label>
-                                <input type="text" name="cliente" class="border border-dark" required>
+                                <input type="text" name="cliente" id="cliente" class="form-control border border-dark" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="text-dark">Tipo</label>
-                            <input type="text" name="tipo" class="border border-dark" required>
+                            <input type="text" name="tipo" id="tipo" class="form-control border border-dark" required>
                         </div>
                         <div class="form-group">
                             <label class="text-dark">Prioridad</label>
-                            <input type="text" name="prioridad" class="border border-dark" required>
+                            <input type="text" name="prioridad" id="prioridad" class="form-control border border-dark" required>
                         </div>
                         <div class="form-group">
                             <label class="text-dark">Responsable</label>
-                            <input type="text" name="responsable" class="border border-dark" required>
+                            <input type="text" name="responsable" id="responsable" class="form-control border border-dark" required>
                         </div>
                        
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary">Cancelar</button>
-                        <button class="btn btn-primary" name="operacion" value="Guardar">Crear Orden</button>
+                        <button class="btn btn-primary" id="botonOreden">Crear Orden</button>
+                        <!-- <button class="btn btn-primary" name="operacion" value="Guardar">Crear Orden</button> -->
                     </div>
                 </form>
             </div>
@@ -270,7 +275,7 @@ $row = $cliente->get();
             <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header btnprimary">
-                    <h5 class="modal-title text-dark" id="exampleModalLabel">Nueva Orden</h5>
+                    <h5 class="modal-title text-dark" id="exampleModalLabel">Editar Orden</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                 <div class="modal-body">
@@ -279,24 +284,24 @@ $row = $cliente->get();
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="text-dark">Orden</label>
-                                <input type="text" name="orden" class="border border-dark" required value="<?php echo $i['orden']; ?>">
+                                <input type="text" name="orden" class="border border-dark form-control" required value="<?php echo $i['orden']; ?>">
                             </div>
                             <div class="form-group">
                                 <label class="text-dark">Cliente</label>
-                                <input type="text" name="cliente" class="border border-dark" required value="<?php echo $i['cliente']; ?>">
+                                <input type="text" name="cliente" class="border border-dark form-control" required value="<?php echo $i['cliente']; ?>">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="text-dark">Tipo</label>
-                            <input type="text" name="tipo" class="border border-dark" required value="<?php echo $i['tipo']; ?>">
+                            <input type="text" name="tipo" class="border border-dark form-control" required value="<?php echo $i['tipo']; ?>">
                         </div>
                         <div class="form-group">
                             <label class="text-dark">Prioridad</label>
-                            <input type="text" name="prioridad" class="border border-dark" required value="<?php echo $i['prioridad']; ?>">
+                            <input type="text" name="prioridad" class="border border-dark form-control" required value="<?php echo $i['prioridad']; ?>">
                         </div>
                         <div class="form-group">
                             <label class="text-dark">Responsable</label>
-                            <input type="text" name="responsable" class="border border-dark" required value="<?php echo $i['responsable']; ?>">
+                            <input type="text" name="responsable" class="border border-dark form-control" required value="<?php echo $i['responsable']; ?>">
                         </div>
                        
                     </div>
@@ -317,5 +322,6 @@ $row = $cliente->get();
 
 
     <script src="app.js"></script>
+    <script src="js/orden.js"></script>
 </body>
 </html>

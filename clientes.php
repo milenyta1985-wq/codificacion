@@ -16,6 +16,10 @@ $row = $cliente->get();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.26.25/sweetalert2.css">
+   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.26.25/sweetalert2.min.js"></script>
+    
+
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
@@ -213,33 +217,35 @@ $row = $cliente->get();
                   </div>
                 <div class="modal-body">
                     
-                    <form action="Controller/Ctl_usuarios.php" method="POST">
+                    <!-- <form action="Controller/Ctl_usuarios.php" method="POST"> -->
+                    <form id="frmCliente">
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="text-dark">Empresa</label>
-                                <input type="text" name="empresa" class="border border-dark" required>
+                                <input type="text" name="empresa" id="empresa" class="form-control border border-dark" required>
                             </div>
                             <div class="form-group">
                                 <label class="text-dark">Telefono</label>
-                                <input type="text" name="telefono" class="border border-dark" required>
+                                <input type="text" name="telefono" id="telefono" class="form-control border border-dark" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="text-dark">Correo</label>
-                            <input type="text" name="correo" class="border border-dark" required>
+                            <input type="text" name="correo" id="correo" class="form-control border border-dark" required>
                         </div>
                         <div class="form-group">
                             <label class="text-dark">Tipo</label>
-                            <input type="text" name="tipo" class="border border-dark" required>
+                            <input type="text" name="tipo" id="tipo" class="form-control border border-dark" required>
                         </div>
                         <div class="form-group">
                             <label class="text-dark">Servicio</label>
-                            <input type="text" name="servicio" class="border border-dark" required>
+                            <input type="text" name="servicio" id="servicio" class="form-control border border-dark" required>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary">Cancelar</button>
-                        <button class="btn btn-primary" name="operacion" value="Guardar">Crear Cliente</button>
+                        <button class="btn btn-primary" id="botonCliente">Crear Cliente</button>
+                        <!-- <button class="btn btn-primary" name="operacion" value="Guardar">Crear Cliente</button> -->
                     </div>
                 </form>
             </div>
@@ -260,25 +266,25 @@ $row = $cliente->get();
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="text-dark">Empresa</label>
-                                <input type="text" name="id_cliente" class="border border-dark" required value="<?php echo $i['id_cliente']; ?>">
-                                <input type="text" name="empresa" class="border border-dark" required value="<?php echo $i['empresa']; ?>">
+                                <input type="hidden" name="id_cliente" class="border border-dark form-control" required value="<?php echo $i['id_cliente']; ?>">
+                                <input type="text" name="empresa" class="border border-dark form-control" required value="<?php echo $i['empresa']; ?>">
                             </div>
                             <div class="form-group">
                                 <label class="text-dark">Telefono</label>
-                                <input type="text" name="telefono" class="border border-dark" required value="<?php echo $i['telefono']; ?>">
+                                <input type="text" name="telefono" class="border border-dark form-control" required value="<?php echo $i['telefono']; ?>">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="text-dark">Correo</label>
-                            <input type="text" name="correo" class="border border-dark" required value="<?php echo $i['correo']; ?>">
+                            <input type="text" name="correo" class="border border-dark form-control" required value="<?php echo $i['correo']; ?>">
                         </div>
                         <div class="form-group">
                             <label class="text-dark">Tipo</label>
-                            <input type="text" name="tipo" class="border border-dark" required value="<?php echo $i['tipo']; ?>">
+                            <input type="text" name="tipo" class="border border-dark form-control" required value="<?php echo $i['tipo']; ?>">
                         </div>
                         <div class="form-group">
                             <label class="text-dark">Servicio</label>
-                            <input type="text" name="servicio" class="border border-dark" required value="<?php echo $i['servicio']; ?>">
+                            <input type="text" name="servicio" class="border border-dark form-control" required value="<?php echo $i['servicio']; ?>">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -295,5 +301,6 @@ $row = $cliente->get();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
     <script src="app.js"></script>
+    <script src="js/cliente.js"></script>
 </body>
 </html>

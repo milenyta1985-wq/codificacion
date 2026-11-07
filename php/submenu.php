@@ -11,8 +11,9 @@
             <i class="fas fa-bell"></i>
             <span class="notification-badge">3</span>
         </button>
-        <button class="btn btn-secondary" id="logoutBtn">
+        <p><?php echo $_SESSION['nombre'].' '.$_SESSION['apellido'] ?></p>
+        <a class="btn btn-secondary" href="Controller/logout.php" id="logoutBtn">
             <i class="fas fa-sign-out-alt"></i> Salir
-        </button>
+        </a>
     </div>
 </header>

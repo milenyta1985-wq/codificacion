@@ -1,6 +1,6 @@
 <?php
 
-include '../model/Tecnico.php';
+include '../Model/Tecnico.php';
 
 $operacion = $_REQUEST['operacion'];
 
@@ -21,13 +21,9 @@ function guardar(){
     $pre = $tecnico->guardar();
 
     if($pre){
-        echo '<script>alert("exitoso");
-          window.location = "../tecnicos.php";
-        </script>';
+        echo 'ok';
     }else{
-        echo '<script>alert("Error");
-            window.location = "../tecnicos.php";
-        </script>';
+        echo 'error';
     }
 
     
