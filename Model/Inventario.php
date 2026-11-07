@@ -76,6 +76,42 @@ class Inventario {
         return $resultados;
 }
 
+ public function mostrar(){
+    require_once "DB/Conexion.php";
+    $con = new Conexion();
+    $resultado = $con->conectar();
+
+        // sentencia sql
+        $sql = $resultado->prepare("SELECT COUNT(*) as total FROM inventario");
+        $sql->execute();
+        $resultados = $sql->fetch(PDO::FETCH_ASSOC);
+        return $resultados;
+}
+ 
+public function mostrardos(){
+    require_once "DB/Conexion.php";
+    $con = new Conexion();
+    $resultado = $con->conectar();
+
+        // sentencia sql
+        $sql = $resultado->prepare("SELECT COUNT(*) as total FROM inventario WHERE cantidad < 6");
+        $sql->execute();
+        $resultados = $sql->fetch(PDO::FETCH_ASSOC);
+        return $resultados;
+}
+
+public function mostrartres(){
+    require_once "DB/Conexion.php";
+    $con = new Conexion();
+    $resultado = $con->conectar();
+
+        // sentencia sql
+        $sql = $resultado->prepare("SELECT SUM(costo) as total FROM inventario ");
+        $sql->execute();
+        $resultados = $sql->fetch(PDO::FETCH_ASSOC);
+        return $resultados;
+}
+
 
 }
 

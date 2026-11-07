@@ -60,16 +60,16 @@ $row = $cliente->get();
                                 <i class="fas fa-search"></i>
                                 <input type="text" placeholder="Buscar orden o cliente...">
                             </div>
-                            <select class="form-input" style="width: auto;">
+                            <!-- <select class="form-input" style="width: auto;">
                                 <option>Todas</option>
                                 <option>Pendiente</option>
                                 <option>En Proceso</option>
                                 <option>Finalizada</option>
                                 <option>Cancelada</option>
-                            </select>
-                            <button class="btn btn-primary">
+                            </select> -->
+                            <!-- <button class="btn btn-primary">
                                 <i class="fas fa-download"></i> Exportar
-                            </button>
+                            </button> -->
                         </div>
 
                         <div class="table-container">

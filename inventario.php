@@ -2,6 +2,9 @@
     include 'Model/Inventario.php';
 $inventario = new Inventario('','','','','','','');
 $row = $inventario->get();
+$rows = $inventario->mostrar();
+$rowsdos = $inventario->mostrardos();
+$rowstres = $inventario->mostrartres();
 
 ?>
 
@@ -59,7 +62,7 @@ $row = $inventario->get();
                             <div class="kpi-icon" style="background: var(--azul-rey);">
                                 <i class="fas fa-boxes"></i>
                             </div>
-                            <div class="kpi-value">148</div>
+                            <div class="kpi-value"><?php echo $rows['total']; ?></div>
                             <div class="kpi-label">Items en Inventario</div>
                         </div>
                         
@@ -67,7 +70,7 @@ $row = $inventario->get();
                             <div class="kpi-icon" style="background: #EF4444;">
                                 <i class="fas fa-exclamation-triangle"></i>
                             </div>
-                            <div class="kpi-value">12</div>
+                            <div class="kpi-value"><?php echo $rowsdos['total']; ?></div>
                             <div class="kpi-label">Stock Bajo</div>
                         </div>
                         
@@ -75,36 +78,23 @@ $row = $inventario->get();
                             <div class="kpi-icon" style="background: var(--amarillo);">
                                 <i class="fas fa-chart-line"></i>
                             </div>
-                            <div class="kpi-value">$85.3M</div>
+                            <div class="kpi-value">$<?php echo number_format($rowstres['total'], 1); ?></div>
                             <div class="kpi-label">Valor Total</div>
                         </div>
                         
-                        <div class="kpi-card">
-                            <div class="kpi-icon" style="background: #10B981;">
-                                <i class="fas fa-tools"></i>
-                            </div>
-                            <div class="kpi-value">24</div>
-                            <div class="kpi-label">Equipos Registrados</div>
-                        </div>
                     </div>
 
+                    <?php if($rowsdos['total']){ ?>
                     <div class="card" style="background: #FEE2E2; border-left: 4px solid #EF4444;">
                         <div style="display: flex; gap: 12px;">
                             <i class="fas fa-exclamation-triangle" style="color: #EF4444; font-size: 20px;"></i>
                             <div>
                                 <h3 style="color: #991B1B; margin-bottom: 8px;">Alerta de Stock Bajo</h3>
-                                <p style="color: #7F1D1D; font-size: 14px; margin-bottom: 8px;">
-                                    12 items tienen stock por debajo del mínimo establecido.
-                                </p>
-                                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                                    <span class="badge" style="background: white;">Compresor de Refrigeración</span>
-                                    <span class="badge" style="background: white;">Gas Refrigerante R410A</span>
-                                    <span class="badge" style="background: white;">Breaker 100A</span>
-                                    <span class="badge" style="background: white;">+9 más</span>
-                                </div>
+                    
                             </div>
                         </div>
                     </div>
+                    <?php } ?>
 
                     <div class="card">
                         <div class="tabs">
