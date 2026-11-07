@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mantenimientos Industriales - Sistema de Gestión</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="stylesheet" href="estilo.css">
 </head>
@@ -38,119 +39,11 @@
 
                     <div class="grid grid-2">
                         <div class="card">
-                            <div class="calendar-header">
-                                <h3 class="calendar-title">Febrero 2026</h3>
-                                <div class="calendar-nav">
-                                    <button class="btn btn-primary" style="padding: 8px 12px;">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </button>
-                                    <button class="btn btn-primary" style="padding: 8px 12px;">Hoy</button>
-                                    <button class="btn btn-primary" style="padding: 8px 12px;">
-                                        <i class="fas fa-chevron-right"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="calendar-grid">
-                                <div class="calendar-day-header">Dom</div>
-                                <div class="calendar-day-header">Lun</div>
-                                <div class="calendar-day-header">Mar</div>
-                                <div class="calendar-day-header">Mié</div>
-                                <div class="calendar-day-header">Jue</div>
-                                <div class="calendar-day-header">Vie</div>
-                                <div class="calendar-day-header">Sáb</div>
-                                
-                                <!-- Days -->
-                                <div class="calendar-day"></div>
-                                <div class="calendar-day"></div>
-                                <div class="calendar-day"></div>
-                                <div class="calendar-day"></div>
-                                <div class="calendar-day"></div>
-                                <div class="calendar-day"></div>
-                                <div class="calendar-day">
-                                    <div class="calendar-day-number">1</div>
-                                </div>
-                                <div class="calendar-day">
-                                    <div class="calendar-day-number">2</div>
-                                </div>
-                                <div class="calendar-day">
-                                    <div class="calendar-day-number">3</div>
-                                </div>
-                                <div class="calendar-day">
-                                    <div class="calendar-day-number">4</div>
-                                </div>
-                                <div class="calendar-day">
-                                    <div class="calendar-day-number">5</div>
-                                </div>
-                                <div class="calendar-day">
-                                    <div class="calendar-day-number">6</div>
-                                </div>
-                                <div class="calendar-day">
-                                    <div class="calendar-day-number">7</div>
-                                </div>
-                                <div class="calendar-day">
-                                    <div class="calendar-day-number">8</div>
-                                </div>
-                                <div class="calendar-day">
-                                    <div class="calendar-day-number">9</div>
-                                </div>
-                                <div class="calendar-day">
-                                    <div class="calendar-day-number">10</div>
-                                    <div class="calendar-events">
-                                        <div class="calendar-event-dot"></div>
-                                    </div>
-                                </div>
-                                <div class="calendar-day">
-                                    <div class="calendar-day-number">11</div>
-                                </div>
-                                <div class="calendar-day">
-                                    <div class="calendar-day-number">12</div>
-                                </div>
-                                <div class="calendar-day active today">
-                                    <div class="calendar-day-number">13</div>
-                                    <div class="calendar-events">
-                                        <div class="calendar-event-dot"></div>
-                                        <div class="calendar-event-dot"></div>
-                                    </div>
-                                </div>
-                                <div class="calendar-day">
-                                    <div class="calendar-day-number">14</div>
-                                    <div class="calendar-events">
-                                        <div class="calendar-event-dot"></div>
-                                        <div class="calendar-event-dot"></div>
-                                    </div>
-                                </div>
-                                <div class="calendar-day">
-                                    <div class="calendar-day-number">15</div>
-                                </div>
-                            </div>
-                        </div>
+                              <section class="agenda-container">
+                                    <div id="calendario"></div>
+                                </section>
 
-                        <div class="card">
-                            <h3 class="card-title" style="margin-bottom: 16px;">Eventos del Día</h3>
-                            <p style="color: var(--gris-texto); margin-bottom: 20px; font-size: 14px;">
-                                Jueves, 13 de febrero de 2026
-                            </p>
-                            
-                            <div class="stat-item">
-                                <div class="stat-icon">
-                                    <i class="fas fa-wrench"></i>
-                                </div>
-                                <div class="stat-details">
-                                    <h4><strong>ORD-1235</strong> - Refrigeración Industrial</h4>
-                                    <p>10:30 - Carlos Ruiz - Cali</p>
-                                </div>
-                            </div>
-
-                            <div class="stat-item">
-                                <div class="stat-icon">
-                                    <i class="fas fa-network-wired"></i>
-                                </div>
-                                <div class="stat-details">
-                                    <h4><strong>ORD-1236</strong> - Cableado Estructurado</h4>
-                                    <p>14:00 - Ana Martínez - Barranquilla</p>
-                                </div>
-                            </div>
-                        </div>
+                      
                     </div>
 
                     <div class="card">
@@ -301,6 +194,55 @@
         </div>
     </div>
 
+
+    <div class="modal fade" id="agenda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 titulos" id="exampleModalLabel">Agendar Cita</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="frmAgendaC">
+                    <div class="mb-3">
+                        <label for="cliente" class="col-form-label titulo">Cliente:</label>
+                        <!-- <input type="hidden" class="form-control campos" id="dia" name="dia" required> -->
+                        <input type="text" class="form-control campos" id="cliente" name="cliente" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="servicio" class="col-form-label titulo">Servicios:</label>
+                        <select name="servicio" id="servicio" class="form-control campos text-capitalize">
+                 
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fecha" class="col-form-label titulo">Fecha</label>
+                        <input type="date" class="form-control campos" id="fecha" name="fecha" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="hora" class="col-form-label titulo">Hora</label>
+                        <input type="time" class="form-control campos" id="hora" name="hora" required>
+                    </div>
+                    <div class="mb-3">
+                   
+                        <label for="usuario" class="col-form-label titulo">Empleado del spa:</label>
+                        <select name="idusuario" id="idusuario" class="form-control campos text-capitalize">
+                
+                        </select>
+                       
+                    </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btnRP" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i> Cancelar</button>
+                        <button id="botonAg" class="botones"><i class="fa-solid fa-save"></i> Guardar Cita</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="app.js"></script>
+    <script src="js/calendario.js"></script>
 </body>
 </html>
